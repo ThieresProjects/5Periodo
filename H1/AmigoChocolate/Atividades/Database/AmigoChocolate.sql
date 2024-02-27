@@ -30,7 +30,7 @@ INSERT INTO H1.GrupoUsuario(
   AmigoSecreto varchar(150),
   Desejo varchar(150),
   Apelido varchar(150),
-  CONSTRAINT FK_Grupo FOREIGN KEY (GrupoID) REFERENCES Grupo(GrupoID),
-  CONSTRAINT FK_Usuario FOREIGN KEY (UsuarioID) REFERENCES Usuario(UsuarioID),
+  CONSTRAINT FK_Grupo FOREIGN KEY (GrupoID) REFERENCES H1.Grupo(GrupoID),
+  CONSTRAINT FK_Usuario FOREIGN KEY (UsuarioID) REFERENCES H1.Usuario(UsuarioID),
   CONSTRAINT PK_GrupoUsuario PRIMARY KEY(GrupoID,UsuarioID)
 );
