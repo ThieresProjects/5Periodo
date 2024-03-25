@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "AmigoChocolate",
-    "slug": "AmigoChocolate",
+    "name": "AC",
+    "slug": "AC",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
