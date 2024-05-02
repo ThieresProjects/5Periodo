@@ -1,13 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import StackComponent from './routes/routes';
 
 export default function App() {
-
-  
-
-  return (
-    
+  return (    
       <StackComponent />
   );
 }
