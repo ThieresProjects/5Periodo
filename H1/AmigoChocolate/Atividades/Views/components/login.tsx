@@ -34,7 +34,7 @@ const Login = () => {
   return (
     <View style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image} >
-      <Text style={styles.title}>Amigo Chocolate</Text>
+      {/* <Text style={styles.title}>Amigo Chocolate</Text> */}
       <TextInput
         style={styles.input}
         placeholder="Usuário"

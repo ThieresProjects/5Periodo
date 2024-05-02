@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     },
     input: {    
       backgroundColor: "#FFF",
+      color: "#000",
       width: "80%",
       height: 50,
       borderColor: "#6d4c41",
@@ -28,7 +29,6 @@ const styles = StyleSheet.create({
       marginBottom: 20,
       paddingHorizontal: 15,
       fontSize: 16,
-      color: "#000000",
     },
     forgotPassword: {
       color: "#6d4c41",

@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useState } from "react"
 import { TextInput, TouchableOpacity, View, Text, StyleSheet, ImageBackground } from "react-native";
 import { StackTypes } from "../routes/routes";
+import styles from './styles'
 
 function TrocaSenha() {
     const [login, setLogin] = useState('');
@@ -25,9 +26,9 @@ function TrocaSenha() {
     const image = {uri: 'https://onedrive.live.com/embed?resid=DEC3DAFF4EF1EA63%21132944&authkey=%21AM-yQL-BGfgX3Dg&width=3508&height=2480'};
 
     return (
-        <View>
+        <View style={styles.container}>
             <ImageBackground source={image} resizeMode="cover" style={styles.image} >
-            <Text style={styles.container}>Trocar Senha</Text>
+            {/* <Text style={styles.container}>Trocar Senha</Text> */}
 
             <TextInput 
                 style={styles.input} 
@@ -57,53 +58,21 @@ function TrocaSenha() {
                 value={senha}
             />
 
-            <TouchableOpacity onPress={handleLogin}>
-                <Text style={styles.button}>Login</Text>
+            <TouchableOpacity onPress={handleLogin} style={styles.button}>
+                <Text style={styles.buttonText}>Login</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={handleTroca}>
-                <Text style={styles.button}>Esquecer a senha?</Text>
+            <TouchableOpacity onPress={handleTroca} style={styles.button}>
+                <Text style={styles.buttonText}>Esquecer a senha?</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={handleCadastro}>
-                <Text style={styles.button}>Criar conta</Text>
+            <TouchableOpacity onPress={handleCadastro} style={styles.button}>
+                <Text style={styles.buttonText}>Criar conta</Text>
             </TouchableOpacity>
             </ImageBackground>
         </View>
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-    //   backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-          
-    },
-    input:{
-        borderBlockColor: 'black',
-        borderWidth: 1,
-        borderRadius: 5,
-        backgroundColor: '#FFF', 
-        margin: 5,
-        padding: 2,
-        flex: 1
-    },
-    button:{
-        borderBlockColor: 'black',
-        borderWidth: 1,
-        borderRadius: 5,
-        backgroundColor: '#FFF', 
-        margin: 5,
-        padding: 2,
-        flex: 1,
-    },
-    image: {
-        flex: 1,
-        justifyContent: 'center',
-        height: 1000 
-      },
-  });
 
 export default TrocaSenha;
