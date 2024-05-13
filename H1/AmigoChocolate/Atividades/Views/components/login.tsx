@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { StackTypes } from "../routes/routes";
+import { StackTypes } from "../Routes/routes";
 import {
   View,
   Text,

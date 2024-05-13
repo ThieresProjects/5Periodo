@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react"
 import { TextInput, TouchableOpacity, View, Text, StyleSheet, ImageBackground } from "react-native";
-import { StackTypes } from "../routes/routes";
+import { StackTypes } from "../Routes/routes";
 import styles from './styles'
 
 function TrocaSenha() {

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import StackComponent from './routes/routes';
+import StackComponent from './Routes/routes';
 
 export default function App() {
   return (    
