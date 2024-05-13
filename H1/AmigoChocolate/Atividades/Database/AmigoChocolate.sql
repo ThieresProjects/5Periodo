@@ -1,20 +1,16 @@
 CREATE SCHEMA H1;
-  
-CREATE TABLE H1.Usuario;
-CREATE TABLE H1.Grupo;
-CREATE TABLE H1.GrupoUsuario;
 
-INSERT INTO H1.Usuario(
-  UsuarioID int PRIMARY KEY NOT NULL,
-  Nome varchar(150),
-  Foto varchar(150)
-);
-
-INSERT INTO H1.Usuario(
-  UsuarioID int PRIMARY KEY NOT NULL,
-  Nome varchar(150),
-);
-INSERT INTO H1.Grupo(
+CREATE TABLE hUm.Usuario(
+    UsuarioID INT PRIMARY KEY NOT NULL,
+    Email VARCHAR(255),
+    Senha VARCHAR(MAX),
+    Nome VARCHAR(255),
+    Imagem VARCHAR(MAX),
+    CriadoEm DATETIME,
+    AtualizadoEm DATETIME,
+    Ativo BIT
+)
+CREATE TABLE hUm.Grupo(
   GrupoID int PRIMARY KEY NOT NULL,
   Nome varchar(150),
   Descricao varchar(250),
@@ -23,8 +19,8 @@ INSERT INTO H1.Grupo(
   Sorteado char,
   Criador varchar(150),
   DataFim datetime
-);
-INSERT INTO H1.GrupoUsuario(
+)
+CREATE TABLE hUm.GrupoUsuario(
   GrupoID int NOT NULL,
   UsuarioID int NOT NULL,
   AmigoSecreto varchar(150),
@@ -33,4 +29,4 @@ INSERT INTO H1.GrupoUsuario(
   CONSTRAINT FK_Grupo FOREIGN KEY (GrupoID) REFERENCES H1.Grupo(GrupoID),
   CONSTRAINT FK_Usuario FOREIGN KEY (UsuarioID) REFERENCES H1.Usuario(UsuarioID),
   CONSTRAINT PK_GrupoUsuario PRIMARY KEY(GrupoID,UsuarioID)
-);
+)
