@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { StackTypes } from "../Routes/routes";
+import { StackTypes } from "../../../Routes/routes";
 import {
   View,
   Text,
@@ -8,10 +8,14 @@ import {
   TouchableOpacity,
   ImageBackground
 } from "react-native";
-import styles from './styles'
-
+import styles from '../../../Content/Styles/styles'
+import { useDispatch, useSelector } from "react-redux";
+import rootReducer from "../../../Redux/root-reducer";
 
 const Login = () => {
+    const { currentUser } = useSelector((state:any) => state.usuarioReducer);
+    const dispach = useDispatch();
+
     const [login, setLogin] = useState('');
     const [senha, setSenha] = useState('');
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { StackTypes } from "../Routes/routes";
+import { StackTypes } from "../../../Routes/routes";
+import styles from '../../../Content/Styles/styles'
 import {
   View,
   Text,
@@ -8,7 +9,6 @@ import {
   TouchableOpacity,
   ImageBackground
 } from "react-native";
-import styles from './styles'
 
 
 const Home = () => {

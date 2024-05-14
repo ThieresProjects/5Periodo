@@ -1,0 +1,23 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+  schemas  = ["hUm"]
+}
+
+model Usuario {
+  UsuarioID    Int      @id
+  Email        String
+  Senha        String
+  Nome         String
+  Imagem       String
+  CriadoEm     DateTime
+  AtualizadoEm DateTime
+  Ativo        Boolean
+
+  @@schema("hUm")
+}
