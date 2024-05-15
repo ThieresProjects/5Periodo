@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StackTypes } from "../../../Routes/routes";
+import styles from '../../../Content/Styles/styles'
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../Store/store";
 import {
   View,
   Text,
@@ -8,14 +11,9 @@ import {
   TouchableOpacity,
   ImageBackground
 } from "react-native";
-import styles from '../../../Content/Styles/styles'
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../../Store/store";
+
 
 const Login = () => {
-    const { usuario } = useSelector( (state : RootState) => state.usuario)
-    const dispach = useDispatch();
-
     const [login, setLogin] = useState('');
     const [senha, setSenha] = useState('');
 
@@ -43,7 +41,7 @@ const Login = () => {
         style={styles.input}
         placeholder="Usuário"
         placeholderTextColor="#ccc"
-        value={usuario.Email}
+        value={login}
         onChangeText={(text) => setLogin(text)}
       />
       <TextInput
