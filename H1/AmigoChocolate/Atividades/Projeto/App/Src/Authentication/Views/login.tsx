@@ -10,10 +10,10 @@ import {
 } from "react-native";
 import styles from '../../../Content/Styles/styles'
 import { useDispatch, useSelector } from "react-redux";
-import rootReducer from "../../../Redux/root-reducer";
+import { RootState } from "../../../Store/store";
 
 const Login = () => {
-    const { currentUser } = useSelector((state:any) => state.usuarioReducer);
+    const { usuario } = useSelector( (state : RootState) => state.usuario)
     const dispach = useDispatch();
 
     const [login, setLogin] = useState('');
@@ -43,7 +43,7 @@ const Login = () => {
         style={styles.input}
         placeholder="Usuário"
         placeholderTextColor="#ccc"
-        value={login}
+        value={usuario.Email}
         onChangeText={(text) => setLogin(text)}
       />
       <TextInput
