@@ -1,4 +1,4 @@
-# Database buinding
+# Database build
 
 ![Screenshot](AmigoChocolate.drawio.png)
 
