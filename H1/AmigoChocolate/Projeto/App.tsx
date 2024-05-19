@@ -2,15 +2,14 @@ import { StyleSheet } from 'react-native';
 import StackComponent from './App/Routes/routes';
 import { Provider } from 'react-redux';
 import store from './App/Store/store';
-import { PrismaClient } from '@prisma/client';
+import db from './Infra/db';
 
-declare global {
-  var prisma: PrismaClient;
-}
 
-prisma = new PrismaClient();
 
-export default function App() {
+export default  function App() {
+
+   db();
+
   return (
       <Provider store={store}>
         <StackComponent />
