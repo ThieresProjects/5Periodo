@@ -4,7 +4,7 @@
 
 
 Se quiser visualizar o codigo em [SQL](AmigoChocolate.sql)
-
+[Projeto](https://app.diagrams.net/#HThieresProjects%2F5Periodo%2Fmain%2FH1%2FAmigoChocolate%2FDatabase%2FAmigoChocolate.drawio#%7B"pageId"%3A"c5-AE6NmAJPWwx7wWNze"%7D)
 ```
 CREATE SCHEMA hUm
 GO
