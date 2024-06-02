@@ -14,12 +14,39 @@ datasource db {
 }
 
 model Usuario {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
   Nome         String
   Email        String
   Senha        String
   Imagem       String?
-  CriadoEm     DateTime @default(now())
-  AtualizadoEm DateTime @updatedAt
+  Ativo        Boolean
+  UsuarioGrupo UsuarioGrupo[]
+}
+
+model Grupo {
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
+  Nome         String
+  Descricao    String
+  Criador      String
+  Quantidade   Int
+  Valor        Float
+  Sorteado     Boolean
+  DataCriacao  DateTime       @default(now())
+  DataFim      DateTime
+  Ativo        Boolean
+  UsuarioGrupo UsuarioGrupo[]
+}
+
+model UsuarioGrupo {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  ParticipanteID String
+  GrupoID        String
+
+  Participante Usuario? @relation(fields: [ParticipanteID], references: [id])
+  Grupo        Grupo?   @relation(fields: [GrupoID], references: [id])
+  Apelido      String
+  AmigoSecreto String
+  Desejo       String
   Ativo        Boolean
 }
