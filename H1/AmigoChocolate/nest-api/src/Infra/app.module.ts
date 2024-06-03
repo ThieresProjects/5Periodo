@@ -1,14 +1,30 @@
 import { Module } from '@nestjs/common';
-import { AppController } from '../Presentation/Api/Controllers/app.controller';
-import { AppService } from '../Application/Services/app.service';
-import { PrismaService } from './Data/Provider/prisma';
+import { PrismaProvider } from './Provider/prisma';
+import { UsuarioService } from 'src/Application/Services/usuario.service';
+import { UsuarioController } from 'src/Presentation/Api/Controllers/usuario.controller';
+import { GrupoService } from 'src/Application/Services/grupo.service';
+import { GrupoController } from 'src/Presentation/Api/Controllers/grupo.controller';
 
 @Module({
   imports: [],
-  controllers: [AppController],
+  controllers: [
+    UsuarioController,
+    GrupoController
+    // UsuarioController
+  ],
   providers: [
-    PrismaService,
-    AppService
+    {
+      provide : PrismaProvider,
+      useClass : UsuarioService
+    },
+    {
+      provide : PrismaProvider,
+      useClass : GrupoService
+    },
+    // {
+    //   provide : PrismaProvider,
+    //   useClass : UsuarioGrupoService
+    // },
   ],
 })
 export class AppModule {}
