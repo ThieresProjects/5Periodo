@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { Grupo } from '@prisma/client';
+import { UsuarioGrupo } from '@prisma/client';
 import { PrismaProvider } from 'src/Infra/Provider/prisma';
 
 @Injectable()
-export class GrupoService {
+export class UsuarioGrupoService {
 
   constructor(
     private readonly prisma : PrismaProvider
   ) { }
 
   getOneBy(find : any) {
-    return this.prisma.grupo.findUnique({
+    return this.prisma.usuarioGrupo.findUnique({
       where : find
     });
   }
@@ -18,30 +18,29 @@ export class GrupoService {
   getManyBy(find : any = null) {
 
     if(find != null)
-      return this.prisma.grupo.findMany({
+      return this.prisma.usuarioGrupo.findMany({
         where : find
       });
     else
-      return this.prisma.grupo.findMany();
+      return this.prisma.usuarioGrupo.findMany();
   }
 
-  create(user : Grupo){
-    return this.prisma.grupo.create({
+  create(user : UsuarioGrupo){
+    return this.prisma.usuarioGrupo.create({
       data: user
     });
   }
 
-  update(id : string ,user : Grupo ){
-    return this.prisma.grupo.update({
+  update(id : string ,user : UsuarioGrupo ){
+    return this.prisma.usuarioGrupo.update({
       where : {id : id},
       data : user
     })
   }
 
   delete (id:string){
-    return this.prisma.grupo.delete({
+    return this.prisma.usuarioGrupo.delete({
       where : { id : id }
     })
   }
-
 }

@@ -5,7 +5,7 @@ import { GrupoService } from 'src/Application/Services/grupo.service';
 @Controller()
 export class GrupoController {
   constructor(
-    private readonly usuarioService : Grupo
+    private readonly grupoService : GrupoService
   ) {
 
   }

@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
 import { Usuario } from '@prisma/client';
 import { UsuarioService } from 'src/Application/Services/usuario.service';
 
@@ -12,14 +12,21 @@ export class UsuarioController {
 
   @Get('usuario')
   getUsers() {
-    return this.usuarioService.getMany();
+    return this.usuarioService.getManyBy();
   }
 
   @Post('usuario')
-  create(){
-
-    var user = { } as Usuario;
-
+  create(user : Usuario){
     return this.usuarioService.create(user);
+  }
+
+  @Put('usuario')
+  update(id: string,user: Usuario){
+    return this.usuarioService.update(id,user);
+  }
+
+  @Delete('usuario')
+  delete(id: string){
+    return this.usuarioService.delete(id);
   }
 }
