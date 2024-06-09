@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Usuario } from '@prisma/client';
 import { PrismaProvider } from 'src/Infra/Provider/prisma';
+import { UUID, randomUUID } from 'crypto';
 
 @Injectable()
 export class UsuarioService {
@@ -26,6 +27,7 @@ export class UsuarioService {
   }
 
   create(user : Usuario){
+    console.log(user);
     return this.prisma.usuario.create({
       data: user
     });

@@ -29,12 +29,13 @@ function TrocaSenha() {
         navigation.navigate('Cadastro');
     }
 
-    const image = {uri: 'https://onedrive.live.com/embed?resid=DEC3DAFF4EF1EA63%21132944&authkey=%21AM-yQL-BGfgX3Dg&width=3508&height=2480'};
+    const image = require('../../../Content/Images/background/marrom.jpg');
+    // const image = {uri: 'https://onedrive.live.com/embed?resid=DEC3DAFF4EF1EA63%21132944&authkey=%21AM-yQL-BGfgX3Dg&width=3508&height=2480'};
 
     return (
         <View style={styles.container}>
             <ImageBackground source={image} resizeMode="cover" style={styles.image} >
-            {/* <Text style={styles.container}>Trocar Senha</Text> */}
+            <Text style={styles.title}>Recuperar Senha</Text>
 
             <TextInput 
                 style={styles.input} 
@@ -42,39 +43,18 @@ function TrocaSenha() {
                 onChangeText={setLogin}
                 value={login}
             />
-            <TextInput 
-                style={styles.input} 
-                placeholder="Senha" 
-                onChangeText={setSenha}
-                secureTextEntry={true} 
-                value={senha}
-            />
-            <TextInput 
-                style={styles.input} 
-                placeholder="Confirmar senha" 
-                onChangeText={setConfSenha}
-                secureTextEntry={true} 
-                value={confSenha}
-            />
-            <TextInput 
-                style={styles.input} 
-                placeholder="Confirmar Senha" 
-                onChangeText={setSenha}
-                secureTextEntry={true} 
-                value={senha}
-            />
 
             <TouchableOpacity onPress={handleLogin} style={styles.button}>
-                <Text style={styles.buttonText}>Login</Text>
+                <Text style={styles.buttonText}>Enviar Email</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={handleTroca} style={styles.button}>
+            {/* <TouchableOpacity onPress={handleTroca} style={styles.button}>
                 <Text style={styles.buttonText}>Esquecer a senha?</Text>
             </TouchableOpacity>
 
             <TouchableOpacity onPress={handleCadastro} style={styles.button}>
                 <Text style={styles.buttonText}>Criar conta</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             </ImageBackground>
         </View>
     )

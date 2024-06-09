@@ -6,12 +6,15 @@ import { GrupoService } from 'src/Application/Services/grupo.service';
 import { GrupoController } from 'src/Presentation/Api/Controllers/grupo.controller';
 import { UsuarioGrupoService } from 'src/Application/Services/usuarioGrupo.service';
 import { UsuarioGrupoController } from 'src/Presentation/Api/Controllers/usuarioGrupo.controller';
+import { AuthService } from 'src/Application/Services/auth.service';
+import { AuthController } from 'src/Presentation/Api/Controllers/auth.controller';
 
 @Module({
   controllers: [
     UsuarioController,
     GrupoController,
-    UsuarioGrupoController
+    UsuarioGrupoController,
+    AuthController
   ],
   providers: [    
 
@@ -22,6 +25,7 @@ import { UsuarioGrupoController } from 'src/Presentation/Api/Controllers/usuario
     UsuarioService,
     GrupoService,
     UsuarioGrupoService,
+    AuthService
     
   ]
 })

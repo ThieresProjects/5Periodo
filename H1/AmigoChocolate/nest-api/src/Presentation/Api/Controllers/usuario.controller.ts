@@ -1,8 +1,8 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { Usuario } from '@prisma/client';
 import { UsuarioService } from 'src/Application/Services/usuario.service';
 
-@Controller()
+@Controller('usuario')
 export class UsuarioController {
   constructor(
     private readonly usuarioService : UsuarioService
@@ -10,23 +10,24 @@ export class UsuarioController {
 
   }
 
-  @Get('usuario')
-  getUsers() {
-    return this.usuarioService.getManyBy();
+  @Get()
+  async getUsers() : Promise<Usuario[]> {
+    return await this.usuarioService.getManyBy();
   }
 
-  @Post('usuario')
-  create(user : Usuario){
-    return this.usuarioService.create(user);
+  @Post()
+  async create(@Body() user : Usuario) : Promise<Usuario> {
+    console.log(user + " prop");
+    return await this.usuarioService.create(user);
   }
 
-  @Put('usuario')
-  update(id: string,user: Usuario){
-    return this.usuarioService.update(id,user);
+  @Put(':id')
+  async update(@Param('id') id: string,user: Usuario) : Promise<Usuario> {
+    return await this.usuarioService.update(id,user);
   }
 
-  @Delete('usuario')
-  delete(id: string){
-    return this.usuarioService.delete(id);
+  @Delete(':id')
+  async delete(@Param('id') id: string) : Promise<Usuario> {
+    return await this.usuarioService.delete(id);
   }
 }

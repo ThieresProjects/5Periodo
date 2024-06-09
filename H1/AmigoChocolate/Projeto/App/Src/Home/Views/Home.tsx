@@ -7,8 +7,11 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  ImageBackground
+  ImageBackground,
+  ScrollView
 } from "react-native";
+import ListGroupComponent from "../Components/ListGroupComponent";
+import HeaderComponent from "../Components/HeaderComponent";
 
 
 const Home = () => {
@@ -17,28 +20,39 @@ const Home = () => {
 
     const navigation = useNavigation<StackTypes>();
 
-    const handleLogin = () => {
-        navigation.navigate('Login');
+    const redirectPage = () => {
+      navigation.navigate('CadastroGrupo');
     }
 
-    const handleTroca = () => {
-        navigation.navigate('TrocaSenha');
+    function defaultVoid(){
+
     }
 
-    const handleCadastro = () => {
-        navigation.navigate('Cadastro');
-    }
-
-    const image = {uri: 'https://onedrive.live.com/embed?resid=DEC3DAFF4EF1EA63%21132944&authkey=%21AM-yQL-BGfgX3Dg&width=3508&height=2480'};
+    const image = require('../../../Content/Images/background/marrom.jpg');
+    // const image = {uri: 'https://onedrive.live.com/embed?resid=DEC3DAFF4EF1EA63%21132944&authkey=%21AM-yQL-BGfgX3Dg&width=3508&height=2480'};
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={image} resizeMode="cover" style={styles.image} >
-      {/* <Text style={styles.title}>Amigo Chocolate</Text> */}
+        <ImageBackground source={image} resizeMode="cover" style={styles.image} >
+          <View style={styles.body}>
 
+            <View style={{
+              margin:'0%'
+            }}>
+              <HeaderComponent />
+            </View>  
 
-      </ImageBackground >
-    </View>
+            <View style={{width:'100%',marginTop:80}}>
+              <ScrollView>
+                  <View style={{}}>
+                    <ListGroupComponent ListTitle="Grupos" share={false} />
+                  </View>          
+              </ScrollView>
+            </View>
+
+          </View>          
+        </ImageBackground >
+      </View>
   );
 };
 

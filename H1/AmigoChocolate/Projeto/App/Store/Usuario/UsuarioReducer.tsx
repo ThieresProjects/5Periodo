@@ -1,36 +1,58 @@
-import { PayloadAction, createSlice, createAsyncThunk, AsyncThunkAction } from "@reduxjs/toolkit";
-import { Usuario } from '@prisma/client';
+import { PayloadAction, createSlice, createAsyncThunk, AsyncThunkAction } from "@reduxjs/toolkit"
+import { Usuario } from "./Usuario";
+import axios from "axios";
 
 interface usuarioState {
-    usuario: Usuario
+    usuarios: Usuario[]
 }
 
 const initialState : usuarioState = {
-    usuario: {} as Usuario
+    usuarios: {} as Usuario[]
 }; 
 
-const createUser = async (usuario : Usuario) => {
-    const user = await prisma.usuario.create({
-        data: usuario,
-    });    
-    return user;    
-};
+const url = 'http://localhost:4200/usuario';
+
+// const getMany = async () => {
+//     const user = await axios.get<Usuario[]>(url);
+//         // .then(function (response) {
+//         //     user = response;
+//         // })
+//         // .catch(function (error) {
+//         //     console.log(error);
+//         // });
+//     return user.request as Usuario;    
+// }
+
+// const create = async (usuario : Usuario) => {
+//     // console.log(usuario);
+//     const user = await axios.post(url, { data: usuario});
+//     console.log(user);
+//     return user.request as Usuario;    
+// };
+
+// const update = async (usuario : Usuario) => {
+//     const user = await axios.put(url,{usuario});
+//     return user.request as Usuario;    
+// };
+
+// // const delete = async (usuario : Usuario) => {
+// //     const user = await axios.delete('localhost:4200/usuario');
+// //     return user.request as Usuario;    
+// // };
 
 const usuarioSlice = createSlice({
     name: 'usuario',
     initialState,
     reducers:{
-        criar: (state, action : PayloadAction<Usuario>) => { 
-            state.usuario = action.payload
+        getUsers: (state, action: PayloadAction<Usuario[]>) => { 
+            state.usuarios = action.payload;
         },
-        criarUsuario: (state, action: PayloadAction<Usuario>) => {
-            createUser(action.payload)
-                .then( user => state.usuario = user)
-                .catch( err => console.error(err));                
+        createUser: (state, action: PayloadAction<Usuario>) => {
+            state.usuarios = [ action.payload ];               
         }
     }
 });
 
-export const { criarUsuario, criar } = usuarioSlice.actions;
+export const { createUser, getUsers } = usuarioSlice.actions;
 
 export default usuarioSlice.reducer;

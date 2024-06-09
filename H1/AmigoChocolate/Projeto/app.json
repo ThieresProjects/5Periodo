@@ -3,11 +3,12 @@
     "name": "Amigo Chocolate",
     "slug": "Amigo Chocolate",
     "version": "1.0.0",
+    "scheme": "amchoco",
     "orientation": "portrait",
     "icon": "./App/Content/Assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./App/Content/Assets/splash.png",
+      "image": "./App/Content/Images/logo/splash-choco.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,7 +22,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./App/Content/Assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.amchoco"
     },
     "web": {
       "favicon": "./App/Content/Assets/favicon.png"
