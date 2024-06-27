@@ -2,8 +2,9 @@ import { Grupo } from "./Grupo"
 import { Usuario } from "./Usuario"
 
 export type UsuarioGrupo = {
-    Participante : Usuario
-    Grupo        : Grupo
+    id? : string 
+    Participante : string
+    Grupo        : string
     AmigoSecreto : string
     Desejo       : string
     Ativo        : boolean

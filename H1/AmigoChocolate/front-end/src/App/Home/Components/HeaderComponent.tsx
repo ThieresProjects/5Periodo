@@ -4,8 +4,13 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../Store/store";
+import { Usuario } from "../../../Util/Models/Usuario";
 
-const HeaderComponent = () => {
+type HeaderPorps = {
+    user : Usuario
+};
+
+const HeaderComponent = (props: HeaderPorps) => {
     const { usuario } =  useSelector( (state:RootState) => state.usuario )
 
     const image = require('../../../Content/Images/perfil/default-user.jpeg');
@@ -21,7 +26,7 @@ const HeaderComponent = () => {
         <View style={{position: 'absolute',top:-50}}>
             <View style={styles.header}>
                 <View >
-                    <Text style={ [styles.subtitle, {margin:15}]}>{usuario.Nome}</Text>
+                    <Text style={ [styles.subtitle, {margin:15}]}>{props.user.Nome }</Text>
                 </View>
                 <View style={{margin:15}}>
                     <Image source={imageUser} style={styles.HeaderImg} ></Image>

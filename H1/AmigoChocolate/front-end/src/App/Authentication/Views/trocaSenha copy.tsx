@@ -30,7 +30,7 @@ function TrocaSenha() {
         navigation.navigate('Cadastro');
     }
 
-    const image = require('../../../Content/Images/background/marrom.jpg');
+    const image = require('../../../Content/Images/background/roxo-marrom.jpg');
     // const image = {uri: 'https://onedrive.live.com/embed?resid=DEC3DAFF4EF1EA63%21132944&authkey=%21AM-yQL-BGfgX3Dg&width=3508&height=2480'};
 
     return (

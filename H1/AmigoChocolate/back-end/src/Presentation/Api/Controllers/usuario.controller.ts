@@ -10,7 +10,12 @@ export class UsuarioController {
   ) {
 
   }
-
+  @Get(':id')
+  async getUserId(@Param('id') id: string) : Promise<Usuario> {
+    console.log(id);
+    return await this.usuarioService.getOneBy({id:id});
+  }
+  
   @Get()
   async getUsers() : Promise<Usuario[]> {
     return await this.usuarioService.getManyBy();
@@ -32,9 +37,9 @@ export class UsuarioController {
     return await this.usuarioService.delete(id);
   }
 
-  @Post('upload')
-  @UseInterceptors(FileInterceptor('file'))
-  uploadFile(@UploadedFile() file: Express.Multer.File) {
-    console.log(file);
-  }
+//   @Post('upload')
+//   @UseInterceptors(FileInterceptor('file'))
+//   uploadFile(@UploadedFile() file: Express.Multer.File) {
+//     console.log(file);
+//   }
 }

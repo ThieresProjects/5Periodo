@@ -18,12 +18,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../Store/store";
 import { setUser } from "../../../Store/Usuario/UsuarioReducer";
 import React from "react";
-import { createUser, uploadFile,  } from "../../../Util/Services/UsuarioService";
+import { createUser  } from "../../../Util/Services/UsuarioService";
 import { ImagemPerfil } from "../../../Util/Models/ImagemPerfil";
 import ImagemDePerfil from "../Components/imagemDePerfil";
 import moment from 'moment';
 
-const Cadastro = () => {
+const CadastroScreen = () => {
     const { usuarios } =  useSelector( (state:RootState) => state.usuario )
     const dispach = useDispatch();
 
@@ -37,12 +37,12 @@ const Cadastro = () => {
 
     const saveImage = async () => {
         if(foto.uri !== undefined){
-            var data = new FormData();
-            var fetchUri = await fetch(foto.uri);
-            var blob = await fetchUri.blob();
-            console.log(JSON.stringify(blob));
-            data.append('file', blob);
-            uploadFile(data);
+            // var data = new FormData();
+            // var fetchUri = await fetch(foto.uri);
+            // var blob = await fetchUri.blob();
+            // console.log(JSON.stringify(blob));
+            // data.append('file', blob);
+            // uploadFile(data);
             //const fileRoute = 'C:/_Repository/ThieresProjects/5Periodo/H1/AmigoChocolate/Projeto/App/Content/Images/upload/';
             // const fileUri =  fileSystem.documentDirectory + `${date}.jpg`;
             // try {
@@ -54,25 +54,25 @@ const Cadastro = () => {
         }
     }
 
-    const Register = () => {
-        const file = saveImage();
-        // var user = {
-        //     Nome: nome,
-        //     Email: email,
-        //     Senha: senha,
-        //     Imagem: formData,
-        //     Ativo: true,
-        // };
-        // console.log(user);
-        // createUser( user );
-        // navigation.navigate('Login');
+    const Register = async () => {
+        // const file = saveImage();
+        var user = {
+            Nome: nome,
+            Email: email,
+            Senha: senha,
+            Imagem: "",
+            Ativo: true,
+        };
+        console.log(user);
+        await createUser( user );
+        navigation.navigate('Login');
     }
 
     const handleLogin = () => {
         
     }
 
-    const image = require('../../../Content/Images/background/marrom.jpg');
+const image = require('../../../Content/Images/background/roxo-marrom.jpg');
 
     return (
         <View  style={styles.container}>
@@ -122,4 +122,4 @@ const Cadastro = () => {
     )
 }
 
-export default Cadastro;
+export default CadastroScreen;

@@ -15,11 +15,11 @@ export class UsuarioGrupoService {
     });
   }
 
-  getManyBy(find : any = null) {
+  getManyBy(userId: string) {
 
-    if(find != null)
+    if(userId != "")
       return this.prisma.usuarioGrupo.findMany({
-        where : find
+        where : { "ParticipanteID" : userId}
       });
     else
       return this.prisma.usuarioGrupo.findMany();

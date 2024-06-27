@@ -1,4 +1,5 @@
 export type Grupo = {
+    id? : string
     Nome        : string
     Descricao   : string
     Criador     : string

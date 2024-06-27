@@ -5,12 +5,12 @@
     "version": "1.0.0",
     "scheme": "amchoco",
     "orientation": "portrait",
-    "icon": "./src/Content/Assets/icon.png",
-    "userInterfaceStyle": "light",
+    "icon": "./src/Content/Images/logo/icon-marrom.png",
+    "userInterfaceStyle": "dark",
     "splash": {
-      "image": "./src/Content/Images/logo/splash-choco.jpg",
+      "image": "./src/Content/Images/logo/splash-marrom.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,7 +20,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/Content/Assets/adaptive-icon.png",
+        "foregroundImage": "./src/Content/Images/logo/icon-marrom.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.amchoco"

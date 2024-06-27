@@ -14,23 +14,22 @@ import { getManyUsers } from "../../../Util/Services/UsuarioService";
 import { setUser } from "../../../Store/Usuario/UsuarioReducer";
 import { useDispatch } from "react-redux";
 
-
-const Login = () => {
+const LoginScreen = () => {
     // const { usuario } =  useSelector( (state:RootState) => state.usuario )
-    const dispach = useDispatch();
+    // const dispach = useDispatch();
 
     const [login, setLogin] = useState('');
     const [senha, setSenha] = useState('');
 
     const navigation = useNavigation<StackTypes>();
 
-    const loginEffect =async () => {
+    const loginEffect = async () => {
       const users = await getManyUsers();
+      const user = users.filter(x => x.Email == login && x.Senha == senha)[0];
       if(
-        users.some(x => x.Email == login.toString() && x.Senha == senha.toString()
-      )){
-        dispach( setUser( users.filter(x => x.Email == login.toString() && x.Senha == senha.toString())[0] ) );
-        navigation.navigate('Home');
+        users.some(x => x.Email == login && x.Senha == senha)
+      ){
+        navigation.navigate('Home',{usuarioId:user.id??""});
       }
       else
         alert('Email ou senha incorretos!');
@@ -48,7 +47,7 @@ const Login = () => {
       const users = await getManyUsers();
     }
 
-    const image = require('../../../Content/Images/background/marrom.jpg');
+    const image = require('../../../Content/Images/background/roxo-marrom.jpg');
     // const image = {uri: 'https://onedrive.live.com/embed?resid=DEC3DAFF4EF1EA63%21132944&authkey=%21AM-yQL-BGfgX3Dg&width=3508&height=2480'};
 
   return (
@@ -71,7 +70,7 @@ const Login = () => {
         onChangeText={(text) => setSenha(text)}
       />
       <TouchableOpacity style={styles.button} onPress={loginEffect}>
-        <Text style={styles.buttonText}>Email</Text>
+        <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handleCadastro}>
         <Text style={styles.buttonText}>Cadastre-se</Text>
@@ -85,4 +84,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginScreen;

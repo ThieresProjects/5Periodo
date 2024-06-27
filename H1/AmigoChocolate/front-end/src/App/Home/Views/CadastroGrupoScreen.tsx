@@ -10,7 +10,7 @@ import {
 import React from "react";
 
 
-const CadastroGrupo = () => {
+const CadastroGrupoScreen = () => {
 
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
@@ -21,7 +21,7 @@ const CadastroGrupo = () => {
 
     }
 
-    const image = require('../../../Content/Images/background/marrom.jpg');
+    const image = require('../../../Content/Images/background/roxo-marrom.jpg');
 
     return (
         <View  style={styles.container}>
@@ -70,4 +70,4 @@ const CadastroGrupo = () => {
     )
 }
 
-export default CadastroGrupo;
+export default CadastroGrupoScreen;

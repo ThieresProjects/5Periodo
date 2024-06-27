@@ -1,9 +1,10 @@
 import { ImagemPerfil } from "./ImagemPerfil";
 
 export type Usuario = {
+    id?: string;
     Nome : string;
     Email: string;
     Senha: string;
-    Imagem: ImagemPerfil;
+    Imagem: string;
     Ativo: boolean;
 }

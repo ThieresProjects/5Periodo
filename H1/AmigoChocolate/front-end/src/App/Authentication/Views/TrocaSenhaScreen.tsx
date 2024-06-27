@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import React from "react";
 
-function TrocaSenha() {
+function TrocaSenhaScreen() {
     const [login, setLogin] = useState('');
     const [senha, setSenha] = useState('');
     const [confSenha, setConfSenha] = useState('');
@@ -30,7 +30,7 @@ function TrocaSenha() {
         navigation.navigate('Cadastro');
     }
 
-    const image = require('../../../Content/Images/background/marrom.jpg');
+    const image = require('../../../Content/Images/background/roxo-marrom.jpg');
     // const image = {uri: 'https://onedrive.live.com/embed?resid=DEC3DAFF4EF1EA63%21132944&authkey=%21AM-yQL-BGfgX3Dg&width=3508&height=2480'};
 
     return (
@@ -62,4 +62,4 @@ function TrocaSenha() {
 }
 
 
-export default TrocaSenha;
+export default TrocaSenhaScreen;

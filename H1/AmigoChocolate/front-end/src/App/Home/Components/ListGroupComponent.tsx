@@ -4,10 +4,13 @@ import { useNavigation } from "@react-navigation/native";
 import { StackTypes } from "../../../Routes/routes";
 import { useState } from "react";
 import React from "react";
+import { Grupo } from "../../../Util/Models/Grupo";
+import { UsuarioGrupo } from "../../../Util/Models/UsuarioGrupo";
 
 interface ListProps {
     ListTitle : string,
     share : boolean,
+    groups : UsuarioGrupo[];
     count?: boolean,
     minCount?: number,
     maxCount?: number,
@@ -15,23 +18,13 @@ interface ListProps {
 }
 
 const ListGroupComponent = (props:ListProps) => {
-    const [data,setData] = useState([
-        {key: 1,name: 'Devin'},
-        {key: 2,name: 'Dan'},
-        {key: 3,name: 'Dominic'},
-        {key: 4,name: 'Jackson'},
-        {key: 5,name: 'James'},
-        {key: 6,name: 'Joel'},
-        {key: 7,name: 'John'},
-        {key: 8,name: 'Jillian'},
-        {key: 9,name: 'Jimmy'},
-    ]);
+    const [data,setData] = useState<UsuarioGrupo[]>(props.groups);
     const navigation = useNavigation<StackTypes>();
     const redirectPage = () => {
-        navigation.navigate('Grupo');
+        navigation.navigate('Grupo', {usuarioId:"",grupoId:""});
     }
     const redirectPageRegister = () => {
-        navigation.navigate('CadastroGrupo');
+        navigation.navigate('CadastroGrupo', {usuarioId:"",grupoId:""});
     }
 
     const url = "exp://1bsr3bg-anonymous-8081.exp.direct/--/amchoco/";
@@ -57,9 +50,9 @@ const ListGroupComponent = (props:ListProps) => {
         }
     }
 
-    const deleteListItem = (key:number) => {
+    const deleteListItem = (key:string) => {
         let arr = data.filter(item => {
-            return item.key !== key
+            return item.id && item.id !== key
         });
         setData(arr);
     }
@@ -94,15 +87,15 @@ const ListGroupComponent = (props:ListProps) => {
             </View>
             <FlatList
                 data={data}
-                renderItem={ ({item}:any) => {
+                renderItem={ ({item}) => {
                     return (
 
-                        <TouchableOpacity key={item.key} onPress={redirectPage}>
+                        <TouchableOpacity key={item.id} onPress={redirectPage}>
                             <View  style={styles.ListItem}>
-                                <Text style={styles.text20}>{item.name}</Text>
+                                <Text style={styles.text20}>{item.Grupo}</Text>
                                 {
                                     props.deleteble &&
-                                    <TouchableOpacity onPress={() => deleteListItem(item.key)}>
+                                    <TouchableOpacity onPress={() => deleteListItem(item.id ?? "")}>
                                         <Text style={styles.text20}>❌</Text>
                                     </TouchableOpacity>
                                 }

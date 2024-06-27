@@ -1,32 +1,33 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { UsuarioGrupo } from '@prisma/client';
 import { UsuarioGrupoService } from 'src/Application/Services/usuarioGrupo.service';
 
-@Controller()
+@Controller('usuarioGrupo/')
 export class UsuarioGrupoController {
   constructor(
-    private readonly usuarioService : UsuarioGrupoService
+    private readonly usuarioGrupoService : UsuarioGrupoService
   ) {
 
   }
 
-  @Get('usuario')
-  getUsers() {
-    return this.usuarioService.getManyBy();
+  @Get(':userId')
+  async getUserGroups(@Param('userId') userId : string) : Promise<UsuarioGrupo[]> {
+    return await this.usuarioGrupoService.getManyBy(userId)
   }
 
-  @Post('usuario')
-  create(userGroup : UsuarioGrupo){
-    return this.usuarioService.create(userGroup);
+  @Post()
+  async create(@Body() userGroup : UsuarioGrupo) : Promise<UsuarioGrupo> {
+    console.log(userGroup + " prop");
+    return await this.usuarioGrupoService.create(userGroup);
   }
 
-  @Put('usuario')
-  update(id: string,userGroup: UsuarioGrupo){
-    return this.usuarioService.update(id,userGroup);
+  @Put(':id')
+  async update(@Param('id') id: string,userGroup: UsuarioGrupo) : Promise<UsuarioGrupo> {
+    return await this.usuarioGrupoService.update(id,userGroup);
   }
 
-  @Delete('usuario')
-  delete(id: string){
-    return this.usuarioService.delete(id);
+  @Delete(':id')
+  async delete(@Param('id') id: string) : Promise<UsuarioGrupo> {
+    return await this.usuarioGrupoService.delete(id);
   }
 }
